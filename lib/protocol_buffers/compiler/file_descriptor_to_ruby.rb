@@ -146,7 +146,7 @@ HEADER
   end
 
   def field_typename(field)
-    TYPE_MAPPING[field.type] || field.type_name.split(".").map { |t| capfirst(t) }.join("::")
+    TYPE_MAPPING[field.type] || field.type_name.split(".").map { |t| camelize(t) }.join("::")
   end
 
   # TODO: this probably doesn't work for all default values, expand
