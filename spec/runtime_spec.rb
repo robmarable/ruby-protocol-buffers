@@ -486,5 +486,14 @@ describe ProtocolBuffers, "runtime" do
     res3 = TehUnknown3::MyResult.parse(serialized2)
     res3.field_1.should == 2
   end
+  
+  it "can compile and instantiate a message in a package with under_scores" do
+    ProtocolBuffers::Compiler.compile_and_load(
+      File.join(File.dirname(__FILE__), "proto_files", "under_score_package.proto"))
+      
+    proc do
+      under_test = UnderScore::UnderTest.new
+    end.should_not raise_error()
+  end
 
 end
