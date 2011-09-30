@@ -488,6 +488,8 @@ describe ProtocolBuffers, "runtime" do
   end
   
   it "can compile and instantiate a message in a package with under_scores" do
+    Object.send(:remove_const, :UnderScore) if defined?(UnderScore)
+    
     ProtocolBuffers::Compiler.compile_and_load(
       File.join(File.dirname(__FILE__), "proto_files", "under_score_package.proto"))
       

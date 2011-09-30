@@ -46,7 +46,7 @@ HEADER
 
     line %{# forward declarations}
     messages.each do |message|
-      line %{class #{name([message.name])} < ::ProtocolBuffers::Message; end}
+      line %{class #{name([@package_modules, message.name].flatten)} < ::ProtocolBuffers::Message; end}
     end
 
     if enums.empty?
